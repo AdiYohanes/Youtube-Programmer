@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Dekorasi Background: Pola titik-titik (polka dot) yang halus */
+    background-color: #f3f4f6;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.container {
+    display: flex;
+    gap: 60px;
+    /* Jarak antara element */
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 24px;
+    font-size: 1.25rem;
+    color: #475569;
+    /* Dark gray text */
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Base style untuk semua kotak */
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #3b82f6;
+    /* Warna biru sebagai base */
+    border-radius: 16px;
+    /* Radius awal melengkung sedikit */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #ffffff;
+    /* Text putih */
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Efek Hover (Fokus ke Border Radius agar terlihat jelas perbedaannya) */
+.box:hover {
+    border-radius: 50%;
+    /* Berubah menjadi lingkaran sempurna */
+    background-color: #2563eb;
+    /* Biru sedikit lebih gelap saat di-hover */
+}
+
+/* ========================================================================= */
+/* --- PERBANDINGAN PENGGUNAAN TRANSITION PROPERTIES ---                     */
+/* ========================================================================= */
+
+/* 1. Kaku & Langsung (Tanpa Transition) */
+.no-transition {
+    transition: none;
+}
+
+/* 2. Lembut & Bergerak Perlahan (Dengan Transition) */
+.with-transition {
+    /* 
+       Format penulisannya: 
+       transition: [property yang dianimasikan] [durasi] [efek kurva/timing]; 
+    */
+    transition: all 0.5s ease-in-out;
+}
