@@ -1,0 +1,503 @@
+:root {
+    /* Brand Colors - Adjusted for Vintage Modern Vibe */
+    --tuku-yellow: #FBCB3A;
+    --tuku-brown: #2C1E16;
+    /* Extremely dark brown/black */
+    --tuku-cream: #F5EFEB;
+    /* Off-white paper color */
+    --white: #FFFFFF;
+
+    /* Typography */
+    --font-serif: 'DM Serif Display', serif;
+    --font-sans: 'Space Grotesk', sans-serif;
+
+    /* Neobrutalism / Vintage Properties */
+    --border-dark: 2.5px solid var(--tuku-brown);
+    --shadow-hard: 6px 6px 0px var(--tuku-brown);
+    --shadow-hard-hover: 3px 3px 0px var(--tuku-brown);
+    --shadow-hard-yellow: 12px 12px 0px var(--tuku-yellow);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--tuku-cream);
+    color: var(--tuku-brown);
+    overflow-x: hidden;
+    line-height: 1.6;
+    /* Subtle noise/texture for the old-school paper feel */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Navbar */
+.navbar {
+    border-bottom: var(--border-dark);
+    background-color: var(--tuku-cream);
+    position: relative;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 16px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 54px;
+    object-fit: contain;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--tuku-brown);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: var(--tuku-yellow);
+    border-radius: 4px;
+}
+
+/* Button */
+.btn-solid {
+    text-decoration: none;
+    background-color: var(--tuku-yellow);
+    color: var(--tuku-brown);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 10px 24px;
+    border: var(--border-dark);
+    box-shadow: var(--shadow-hard);
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.btn-solid:hover {
+    transform: translate(3px, 3px);
+    box-shadow: var(--shadow-hard-hover);
+}
+
+/* Marquee */
+.marquee-container {
+    border-bottom: var(--border-dark);
+    background-color: var(--tuku-brown);
+    color: var(--tuku-cream);
+    overflow: hidden;
+    padding: 12px 0;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.marquee-content span {
+    margin: 0 16px;
+    display: inline-block;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.33%);
+    }
+}
+
+/* Page Wrapper */
+.page-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Hero Section */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    padding: 80px 0 100px 0;
+    align-items: center;
+}
+
+/* Hero Content */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    position: relative;
+    z-index: 10;
+}
+
+.vintage-badge {
+    border: var(--border-dark);
+    padding: 6px 16px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 999px;
+    background-color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 3px 3px 0 var(--tuku-brown);
+}
+
+.vintage-badge i {
+    color: var(--tuku-yellow);
+    font-size: 1.1rem;
+    -webkit-text-stroke: 1px var(--tuku-brown);
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 5.5rem;
+    line-height: 1.05;
+    color: var(--tuku-brown);
+    letter-spacing: -1px;
+}
+
+.italic-serif {
+    font-style: italic;
+    color: var(--tuku-yellow);
+    text-shadow: 2px 2px 0px var(--tuku-brown), -1px -1px 0px var(--tuku-brown), 1px -1px 0px var(--tuku-brown), -1px 1px 0px var(--tuku-brown), 1px 1px 0px var(--tuku-brown);
+    display: inline-block;
+    padding-right: 12px;
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    max-width: 90%;
+    font-weight: 500;
+    line-height: 1.7;
+    border-left: 4px solid var(--tuku-yellow);
+    padding-left: 16px;
+}
+
+.btn-primary {
+    text-decoration: none;
+    background-color: var(--white);
+    color: var(--tuku-brown);
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 16px 32px;
+    border: var(--border-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-hard);
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: var(--tuku-yellow);
+    transform: translate(3px, 3px);
+    box-shadow: var(--shadow-hard-hover);
+}
+
+/* Product Highlight Card */
+.product-highlight {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    background-color: var(--white);
+    border: var(--border-dark);
+    padding: 12px 24px 12px 12px;
+    box-shadow: var(--shadow-hard);
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.product-highlight:hover {
+    transform: translateY(-4px);
+}
+
+.product-img-wrapper {
+    width: 64px;
+    height: 64px;
+    border: var(--border-dark);
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--tuku-cream);
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Vintage photo filter */
+    filter: sepia(0.3) saturate(1.2);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.product-info span {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Hero Visual */
+.hero-visual {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-frame {
+    border: var(--border-dark);
+    box-shadow: var(--shadow-hard-yellow);
+    background-color: var(--white);
+    padding: 16px 16px 80px 16px;
+    /* Extra bottom padding for polaroid look */
+    position: relative;
+    transform: rotate(2deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 500px;
+    width: 100%;
+    z-index: 5;
+}
+
+.image-frame:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 16px 16px 0px var(--tuku-yellow);
+}
+
+.main-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    object-position: left center;
+    /* Added object-position to show the text */
+    border: var(--border-dark);
+    /* Subtle vintage treatment on the main image */
+    filter: sepia(0.25) contrast(1.05) brightness(0.95);
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.caption-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.caption-stamp {
+    font-family: var(--font-serif);
+    color: var(--tuku-yellow);
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.retro-star {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -30px;
+    left: -40px;
+    z-index: 10;
+    animation: rotateSlow 20s linear infinite;
+}
+
+/* Animations */
+@keyframes rotateSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Overrides */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 4.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: 64px;
+        text-align: center;
+    }
+
+    .hero-content {
+        align-items: center;
+    }
+
+    .hero-subtitle {
+        border-left: none;
+        border-bottom: 4px solid var(--tuku-yellow);
+        padding-left: 0;
+        padding-bottom: 16px;
+        margin: 0 auto;
+    }
+
+    .product-highlight {
+        margin: 24px auto 0;
+    }
+
+    .retro-star {
+        left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .main-img {
+        height: 400px;
+    }
+
+    .image-frame {
+        transform: rotate(0);
+        padding: 12px 12px 70px 12px;
+    }
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--tuku-cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.preloader-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+}
+
+.preloader-star {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: rotatePreloader 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    z-index: 1;
+}
+
+.preloader-logo {
+    position: absolute;
+    width: 48px;
+    height: auto;
+    z-index: 2;
+    animation: pulseLogo 2s ease-in-out infinite;
+    /* Optional: making it match the retro aesthetic slightly */
+    filter: drop-shadow(2px 2px 0px rgba(44, 30, 22, 0.2));
+}
+
+.hide-preloader {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes rotatePreloader {
+    0% {
+        transform: rotate(0deg) scale(0.9);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(0.9);
+    }
+}
+
+@keyframes pulseLogo {
+
+    0%,
+    100% {
+        transform: scale(0.95);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}

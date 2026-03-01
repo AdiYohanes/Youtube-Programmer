@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Kopi Tuku | Kopi Tetangga</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Retro Modern Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <svg class="preloader-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FBCB3A" stroke="#2C1E16" stroke-width="6"
+                    d="M50 0 C50 25 75 50 100 50 C75 50 50 75 50 100 C50 75 25 50 0 50 C25 50 50 25 50 0" />
+            </svg>
+            <img src="tuku-logo.png" alt="Tuku Logo" class="preloader-logo">
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="tuku-logo.png" alt="Toko Kopi Tuku Logo">
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">Beranda</a>
+                <a href="#">Tentang Kami</a>
+                <a href="#">Menu Tuku</a>
+                <a href="#">Lokasi</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn-solid">Pesan Sekarang</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee Tape -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>✦ Kopi Tetangga Sejak 2015 ✦</span>
+            <span>Est. Jakarta Selatan ✦</span>
+            <span>Biji Kopi Nusantara ✦</span>
+            <span>Kopi Tetangga Sejak 2015 ✦</span>
+            <span>Est. Jakarta Selatan ✦</span>
+            <span>Biji Kopi Nusantara ✦</span>
+            <span>Kopi Tetangga Sejak 2015 ✦</span>
+            <span>Est. Jakarta Selatan ✦</span>
+            <span>Biji Kopi Nusantara ✦</span>
+        </div>
+    </div>
+
+    <!-- Main Hero -->
+    <div class="page-wrapper">
+        <main class="hero-section">
+            <div class="hero-content">
+                <div class="vintage-badge">
+                    <i class="ri-cup-fill"></i> EST. 2015
+                </div>
+                <h1 class="hero-title">
+                    Kopi Tetangga <br>
+                    <span class="italic-serif">Kaya Cerita.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Hadir lebih dekat untuk menemani keseharian. Bukan sekadar rasa, tapi cerita dan kehangatan dalam
+                    setiap seduhan es kopi susu tetangga.
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-primary">
+                        Lihat Menu Kami
+                        <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+
+                <!-- Product Highlight -->
+                <div class="product-highlight">
+                    <div class="product-img-wrapper">
+                        <img src="kopi-tuku-produk.webp" alt="Produk Kopi Tuku" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <strong>Kopi Susu Tetangga</strong>
+                        <span>Selalu sedia untuk harimu.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <!-- Polaroid / Vintage Frame Style -->
+                <div class="image-frame">
+                    <img src="toko-kopi-tuku-homepageimage-reference.webp" alt="Suasana Toko Kopi Tuku"
+                        class="main-img">
+                    <div class="photo-caption">
+                        <div class="caption-text">
+                            <i class="ri-map-pin-line"></i>
+                            <span>Suasana hangat kedai terdekat</span>
+                        </div>
+                        <div class="caption-stamp">TUKU ARCHIVE</div>
+                    </div>
+                </div>
+
+                <!-- Decorative Retro Star -->
+                <div class="retro-star">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#FBCB3A" stroke="#2C1E16" stroke-width="4"
+                            d="M50 0 C50 25 75 50 100 50 C75 50 50 75 50 100 C50 75 25 50 0 50 C25 50 50 25 50 0" />
+                    </svg>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Preloader Logic
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const preloader = document.getElementById('preloader');
+                preloader.classList.add('hide-preloader');
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 800); // 800ms initial screen display for effect
+        });
+    </script>
+</body>
+
+</html>
