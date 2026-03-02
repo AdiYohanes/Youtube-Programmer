@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criteo Shoe Store Dashboard</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Boxicons for clean Dashboard Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class='bx bxs-shoe'></i>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" title="Home"><i class='bx bx-home-alt'></i></a>
+                <a href="#" class="nav-item" title="Explore"><i class='bx bx-grid-alt'></i></a>
+                <a href="#" class="nav-item" title="Cart"><i class='bx bx-shopping-bag'></i></a>
+                <a href="#" class="nav-item" title="Favorites"><i class='bx bx-heart'></i></a>
+                <a href="#" class="nav-item" title="Settings"><i class='bx bx-cog'></i></a>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=User&background=3B82F6&color=fff" alt="User">
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-container">
+                    <i class='bx bx-search'></i>
+                    <input type="text" class="search-bar" placeholder="Search for shoes...">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn">
+                        <i class='bx bx-bell'></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="btn-primary">Connect Wallet</button>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero-banner">
+                <div class="hero-content">
+                    <h1>Step Into the<br>Future of Comfort</h1>
+                    <p>Discover the latest drops & exclusive releases from top brands around the globe. Elevate your
+                        style today.</p>
+                    <button class="btn-primary btn-large">Shop New Arrivals <i
+                            class='bx bx-right-arrow-alt'></i></button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=1000&auto=format&fit=crop"
+                        alt="Hero Sneaker">
+                </div>
+            </section>
+
+            <!-- Product Section -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2>Trending Releases</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+
+                <div class="product-grid">
+                    <!-- Product Card 1 -->
+                    <div class="product-card">
+                        <div class="card-image-wrapper bg-green">
+                            <span class="badge badge-new">NEW</span>
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop"
+                                alt="Nike Air Max Retro">
+                            <button class="fav-btn"><i class='bx bx-heart'></i></button>
+                        </div>
+                        <div class="card-info">
+                            <span class="category">Running</span>
+                            <h3 class="card-title">Nike Air Max Retro Red</h3>
+                            <div class="price-container">
+                                <span class="price-discount">$120.00</span>
+                                <span class="price-original">$150.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="product-card">
+                        <div class="card-image-wrapper bg-purple">
+                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800&auto=format&fit=crop"
+                                alt="Colorful Sneaker">
+                            <button class="fav-btn"><i class='bx bx-heart'></i></button>
+                        </div>
+                        <div class="card-info">
+                            <span class="category">Basketball</span>
+                            <h3 class="card-title">Air Jordan 1 High Multi</h3>
+                            <div class="price-container">
+                                <span class="price-discount">$180.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="product-card">
+                        <div class="card-image-wrapper bg-indigo">
+                            <span class="badge badge-hot">HOT</span>
+                            <img src="https://images.unsplash.com/photo-1551107696-a4b0a5f621c4?q=80&w=800&auto=format&fit=crop"
+                                alt="Classic White Sneaker">
+                            <button class="fav-btn"><i class='bx bx-heart'></i></button>
+                        </div>
+                        <div class="card-info">
+                            <span class="category">Lifestyle</span>
+                            <h3 class="card-title">Puma RS-X3 Puzzle</h3>
+                            <div class="price-container">
+                                <span class="price-discount">$110.00</span>
+                                <span class="price-original">$130.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="product-card">
+                        <div class="card-image-wrapper bg-cyan">
+                            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800&auto=format&fit=crop"
+                                alt="Adidas Yeezy Boost">
+                            <button class="fav-btn"><i class='bx bx-heart'></i></button>
+                        </div>
+                        <div class="card-info">
+                            <span class="category">Limited Edition</span>
+                            <h3 class="card-title">Adidas Yeezy Boost 350</h3>
+                            <div class="price-container">
+                                <span class="price-discount">$220.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
