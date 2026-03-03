@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvara Residence — Simple Style</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style2-simple.css">
+</head>
+
+<body>
+
+    <!-- === 1. NAVBAR === -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="brand"><i class="fa-solid fa-house-user"></i> Nuvara</a>
+            <div class="nav-links">
+                <a href="#about">Tentang</a>
+                <a href="#units">Tipe Unit</a>
+                <a href="#facilities">Fasilitas</a>
+                <a href="#location">Lokasi</a>
+                <a href="#contact" class="btn btn-primary" style="color:white;">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === 2. HERO === -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">🌟 Hunian Premium Serpong</div>
+                <h1>Your Modern Sanctuary, perfectly crafted.</h1>
+                <p>Temukan keseimbangan hidup yang sempurna dalam kawasan asri dengan fasilitas premium dan akses
+                    strategis di Serpong, Tangerang Selatan.</p>
+                <div class="hero-btns">
+                    <a href="#units" class="btn btn-accent">Lihat Tipe Rumah</a>
+                    <a href="#contact" class="btn btn-outline" style="border-color:white; color:white;">Jadwalkan
+                        Survei</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 3. ABOUT === -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 about-img">
+                    <img src="https://picsum.photos/seed/realestate1/800/600" alt="Nuvara Project" width="800"
+                        height="600">
+                    <div class="badge-float">
+                        <strong>20+</strong>
+                        Tahun Pengalaman
+                    </div>
+                </div>
+                <div class="col-6" style="display:flex; flex-direction:column; justify-content:center;">
+                    <h4 style="color:var(--primary); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">
+                        Tentang Nuvara</h4>
+                    <h2 style="margin-bottom:24px;">Investasi Properti Terbaik untuk Masa Depan Anda</h2>
+                    <p style="margin-bottom:16px;">Dikembangkan oleh PT. Nuvara Properti Indonesia, kami berkomitmen
+                        untuk menciptakan lingkungan tempat tinggal yang harmonis, aman, dan nyaman.</p>
+                    <p style="margin-bottom:32px;">Setiap unit didesain dengan sirkulasi udara maksimal, pencahayaan
+                        alami, dan material bangunan berkualitas tinggi yang awet untuk puluhan tahun.</p>
+                    <ul style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+                        <li><i class="fa-solid fa-circle-check" style="color:var(--success); margin-right:8px;"></i>
+                            Desain Arsitektur Modern Minimalis</li>
+                        <li><i class="fa-solid fa-circle-check" style="color:var(--success); margin-right:8px;"></i>
+                            Sistem Keamanan Terpadu 24 Jam</li>
+                        <li><i class="fa-solid fa-circle-check" style="color:var(--success); margin-right:8px;"></i>
+                            Lingkungan Hijau Bebas Banjir</li>
+                    </ul>
+                    <div>
+                        <a href="#contact" class="btn btn-primary">Download Brosur</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 4. UNIT TYPES === -->
+    <section id="units" class="units">
+        <div class="container">
+            <div class="section-title">
+                <h4 style="color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                    Pilihan Hunian</h4>
+                <h2>Tipe Rumah yang Tersedia</h2>
+            </div>
+
+            <div class="row">
+                <!-- Type 36 -->
+                <div class="col-6">
+                    <div class="card unit-card img-hover">
+                        <div class="unit-img-wrapper">
+                            <span class="price-badge">Rp 850 Juta</span>
+                            <img src="https://picsum.photos/seed/house1/600/400" alt="Type 36" width="600" height="400"
+                                loading="lazy">
+                        </div>
+                        <div class="unit-card-body">
+                            <h3>Type 36/72 - The Essential</h3>
+                            <p>Desain kompak yang mengoptimalkan setiap meter persegi untuk fungsionalitas maksimal bagi
+                                pasangan muda yang enerjik.</p>
+                            <div class="unit-features">
+                                <span class="u-feat"><i class="fa-solid fa-bed"></i> 2</span>
+                                <span class="u-feat"><i class="fa-solid fa-bath"></i> 1</span>
+                                <span class="u-feat"><i class="fa-solid fa-car"></i> 1</span>
+                                <span class="u-feat"><i class="fa-solid fa-ruler-combined"></i> 36m²</span>
+                            </div>
+                            <a href="#contact" class="btn btn-outline" style="width:100%;">Minta Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Type 45 -->
+                <div class="col-6">
+                    <div class="card unit-card img-hover">
+                        <div class="unit-img-wrapper">
+                            <span class="price-badge">Rp 1.2 Miliar</span>
+                            <img src="https://picsum.photos/seed/house2/600/400" alt="Type 45" width="600" height="400"
+                                loading="lazy">
+                        </div>
+                        <div class="unit-card-body">
+                            <h3>Type 45/90 - The Comfort</h3>
+                            <p>Keseimbangan sempurna antara area indoor dan outdoor, dilengkapi dengan taman pribadi
+                                untuk bersantai.</p>
+                            <div class="unit-features">
+                                <span class="u-feat"><i class="fa-solid fa-bed"></i> 2</span>
+                                <span class="u-feat"><i class="fa-solid fa-bath"></i> 2</span>
+                                <span class="u-feat"><i class="fa-solid fa-car"></i> 1</span>
+                                <span class="u-feat"><i class="fa-solid fa-ruler-combined"></i> 45m²</span>
+                            </div>
+                            <a href="#contact" class="btn btn-outline" style="width:100%;">Minta Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Type 60 -->
+                <div class="col-6">
+                    <div class="card unit-card img-hover">
+                        <div class="unit-img-wrapper">
+                            <span class="price-badge">Rp 1.8 Miliar</span>
+                            <img src="https://picsum.photos/seed/house3/600/400" alt="Type 60" width="600" height="400"
+                                loading="lazy">
+                        </div>
+                        <div class="unit-card-body">
+                            <h3>Type 60/120 - The Signature</h3>
+                            <p>Hunian lapang dua lantai yang dirancang dengan tata ruang apik untuk keluarga yang terus
+                                berkembang.</p>
+                            <div class="unit-features">
+                                <span class="u-feat"><i class="fa-solid fa-bed"></i> 3</span>
+                                <span class="u-feat"><i class="fa-solid fa-bath"></i> 2</span>
+                                <span class="u-feat"><i class="fa-solid fa-car"></i> 2</span>
+                                <span class="u-feat"><i class="fa-solid fa-ruler-combined"></i> 60m²</span>
+                            </div>
+                            <a href="#contact" class="btn btn-outline" style="width:100%;">Minta Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Type 90 -->
+                <div class="col-6">
+                    <div class="card unit-card img-hover">
+                        <div class="unit-img-wrapper">
+                            <span class="price-badge">Rp 2.6 Miliar</span>
+                            <img src="https://picsum.photos/seed/house4/600/400" alt="Type 90" width="600" height="400"
+                                loading="lazy">
+                        </div>
+                        <div class="unit-card-body">
+                            <h3>Type 90/180 - The Grand</h3>
+                            <p>Kemewahan tanpa kompromi. Layout luas dengan material premium dan ruang tambahan untuk
+                                hobi atau tamu.</p>
+                            <div class="unit-features">
+                                <span class="u-feat"><i class="fa-solid fa-bed"></i> 4</span>
+                                <span class="u-feat"><i class="fa-solid fa-bath"></i> 3</span>
+                                <span class="u-feat"><i class="fa-solid fa-car"></i> 2</span>
+                                <span class="u-feat"><i class="fa-solid fa-ruler-combined"></i> 90m²</span>
+                            </div>
+                            <a href="#contact" class="btn btn-outline" style="width:100%;">Minta Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 5. INTERIOR GALLERY === -->
+    <section class="gallery">
+        <div class="container-fluid" style="padding-left:40px; text-align:center;">
+            <div class="section-title">
+                <h4 style="color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                    Galeri Interior</h4>
+                <h2>Inspirasi Tata Ruang</h2>
+            </div>
+
+            <!-- Pure CSS horizontal scroll slider per instruction free tier -->
+            <div class="slider-container" id="slider">
+                <div class="slide-item"><img src="https://picsum.photos/seed/interior1/800/600" alt="Ruang Tamu"
+                        loading="lazy" width="800" height="600"></div>
+                <div class="slide-item"><img src="https://picsum.photos/seed/interior4/800/600" alt="Dapur Bersih"
+                        loading="lazy" width="800" height="600"></div>
+                <div class="slide-item"><img src="https://picsum.photos/seed/interior5/800/600" alt="Ruang Makan"
+                        loading="lazy" width="800" height="600"></div>
+                <div class="slide-item"><img src="https://picsum.photos/seed/interior3/800/600" alt="Kamar Mandi"
+                        loading="lazy" width="800" height="600"></div>
+                <div class="slide-item"><img src="https://picsum.photos/seed/interior2/800/600" alt="Kamar Tidur Utama"
+                        loading="lazy" width="800" height="600"></div>
+                <div class="slide-item"><img src="https://picsum.photos/seed/interior6/800/600" alt="Ruang Kerja"
+                        loading="lazy" width="800" height="600"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- === 6. FASILITAS RUMAH === -->
+    <section id="facilities" class="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h4 style="color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                    Spesifikasi</h4>
+                <h2>Fasilitas Dalam Unit</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-car"></i></div>
+                        <div>
+                            <h4>Carport luas</h4>
+                            <p>Muat 2 mobil besar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <div>
+                            <h4>Taman Pribadi</h4>
+                            <p>Hijab hijau di belakang</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div>
+                            <h4>Listrik 2200W</h4>
+                            <p>Underground cable</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-shower"></i></div>
+                        <div>
+                            <h4>Water Heater</h4>
+                            <p>Jalur air panas tiap KM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+                        <div>
+                            <h4>Canopy Teras</h4>
+                            <p>Material tahan cuaca</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-lock"></i></div>
+                        <div>
+                            <h4>Smart Door</h4>
+                            <p>Pin, FP, Kartu pada pintu utama</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-bath"></i></div>
+                        <div>
+                            <h4>Bathtub (Type 90)</h4>
+                            <p>Standar hotel bintang 5</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="fac-card">
+                        <div class="fac-icon"><i class="fa-solid fa-box-open"></i></div>
+                        <div>
+                            <h4>Storage Room</h4>
+                            <p>Gudang rapi tersembunyi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 7. FASILITAS PERUMAHAN === -->
+    <section class="estate-fac">
+        <div class="container">
+            <div class="section-title">
+                <h4 style="color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                    Kenyamanan Kawasan</h4>
+                <h2>Fasilitas Unggulan Perumahan</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="estate-card">
+                        <div class="estate-img"><img src="https://picsum.photos/seed/facility1/600/400"
+                                alt="Swimming Pool" loading="lazy" width="600" height="400"></div>
+                        <div class="estate-body">
+                            <h4>Kolam Renang</h4>
+                            <p>Area renang terpisah untuk anak & dewasa yang jernih.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="estate-card">
+                        <div class="estate-img"><img src="https://picsum.photos/seed/facility2/600/400" alt="Clubhouse"
+                                loading="lazy" width="600" height="400"></div>
+                        <div class="estate-body">
+                            <h4>Clubhouse Utama</h4>
+                            <p>Ruang komunal yang nyaman untuk bersosialisasi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="estate-card">
+                        <div class="estate-img"><img src="https://picsum.photos/seed/facility3/600/400" alt="Gym"
+                                loading="lazy" width="600" height="400"></div>
+                        <div class="estate-body">
+                            <h4>Pusat Kebugaran</h4>
+                            <p>Indoor gym dengan perlengkapan modern dan lengkap.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="estate-card">
+                        <div class="estate-img"><img src="https://picsum.photos/seed/facility4/600/400" alt="Park"
+                                loading="lazy" width="600" height="400"></div>
+                        <div class="estate-body">
+                            <h4>Area Hijau Terbuka</h4>
+                            <p>Taman bermain, jogging track, dan pepohonan asri.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 8. LOKASI & MAP === -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 loc-info">
+                    <h4 style="color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                        Akses Strategis</h4>
+                    <h2 style="margin-bottom:24px;">Kemudahan Mobilitas Anda</h2>
+                    <p style="margin-bottom:32px;">Nikmati akses mudah ke segala kebutuhan gaya hidup Anda, mulai dari
+                        pusat perbelanjaan ternama hingga fasilitas kesehatan dan pendidikan berkelas internasional.</p>
+
+                    <div class="loc-item">
+                        <div class="loc-item-icon"><i class="fa-solid fa-road"></i></div>
+                        <div>
+                            <h4>2 KM ke Pintu Tol Serpong</h4>
+                            <p>Akses langsung menuju Jakarta, Bandara, dan destinasi sekitarnya.</p>
+                        </div>
+                    </div>
+                    <div class="loc-item">
+                        <div class="loc-item-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <div>
+                            <h4>4 KM ke Pusat Perbelanjaan</h4>
+                            <p>Dekat dengan AEON Mall, The Breeze, dan QBig BSD City.</p>
+                        </div>
+                    </div>
+                    <div class="loc-item">
+                        <div class="loc-item-icon"><i class="fa-solid fa-hospital"></i></div>
+                        <div>
+                            <h4>6 KM ke Fasilitas Kesehatan & Edukasi</h4>
+                            <p>Dikelilingi rumah sakit terkemuka dan sekolah multinasional pilihan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="map-wrapper">
+                        <img src="https://picsum.photos/seed/facility5/600/600" alt="Map Area" loading="lazy"
+                            width="600" height="600">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 9. TESTIMONIAL === -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="section-title">
+                <h4 style="color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                    Testimoni</h4>
+                <h2>Apa Kata Pembeli Kami</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="testi-card">
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testi-text">Kualitas bangunan sangat memuaskan, berbeda dengan perumahan lain. Proses
+                            serah terima pun tepat waktu sesuai komitmen developer.</p>
+                        <div class="testi-author">
+                            <img src="https://picsum.photos/seed/person1/100/100" alt="Bapak Tono" loading="lazy"
+                                width="100" height="100">
+                            <h4>Bapak Tono</h4>
+                            <span>Pemilik Type 45</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="testi-card">
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testi-text">Saya sangat suka tata ruang rumahnya yang modern dan tidak sumpek.
+                            Anak-anak betah main di clubhouse tiap sore.</p>
+                        <div class="testi-author">
+                            <img src="https://picsum.photos/seed/person2/100/100" alt="Ibu Rina" loading="lazy"
+                                width="100" height="100">
+                            <h4>Ibu Rina</h4>
+                            <span>Pemilik Type 90</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="testi-card">
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testi-text">Lingkungannya bersih, asri, dan keamanannya sangat ketat. Petugas security
+                            ramah tapi sangat disiplin menjaga kawasan 24 jam.</p>
+                        <div class="testi-author">
+                            <img src="https://picsum.photos/seed/person3/100/100" alt="Andy" loading="lazy" width="100"
+                                height="100">
+                            <h4>Andy W.</h4>
+                            <span>Pemilik Type 60</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 10. CTA SECTION === -->
+    <section id="contact" class="cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Miliki Rumah Impian Anda Sekarang Jua</h2>
+                <p>Jangan lewatkan penawaran spesial harga perdana dan bebas biaya surat-surat selama masa Pre-Launch.
+                    Hubungi kami untuk jadwal survei properti.</p>
+                <div style="display:flex; justify-content:center; gap:24px; margin-top:32px;">
+                    <a href="#" class="btn btn-accent" style="font-size: 18px; padding: 16px 32px;"><i
+                            class="fa-brands fa-whatsapp" style="margin-right:8px;"></i> Chat WhatsApp Sales</a>
+                    <a href="#" class="btn btn-outline"
+                        style="font-size: 18px; padding: 16px 32px; border-color:white; color:white;"><i
+                            class="fa-solid fa-phone" style="margin-right:8px;"></i> Telepon Kami</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === 11. FOOTER === -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-3 footer-col">
+                    <div class="footer-brand"><i class="fa-solid fa-house-user"></i> Nuvara Residence</div>
+                    <p style="margin-bottom:24px;">Your Modern Sanctuary, perfectly crafted. Kawasan hunian premium oleh
+                        PT Nuvara Properti Indonesia.</p>
+                    <div class="socials">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-3 footer-col">
+                    <h4>Varian Unit</h4>
+                    <ul>
+                        <li><a href="#">The Essential (T-36)</a></li>
+                        <li><a href="#">The Comfort (T-45)</a></li>
+                        <li><a href="#">The Signature (T-60)</a></li>
+                        <li><a href="#">The Grand (T-90)</a></li>
+                    </ul>
+                </div>
+                <div class="col-3 footer-col">
+                    <h4>Pintasan</h4>
+                    <ul>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#facilities">Fasilitas</a></li>
+                        <li><a href="#location">Peta Lokasi</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-3 footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <ul style="color:var(--white);">
+                        <li style="display:flex; gap:12px; margin-bottom:16px;">
+                            <i class="fa-solid fa-location-dot" style="color:var(--accent); margin-top:4px;"></i>
+                            <span>Jl. Raya Serpong No. 12<br>Tangerang Selatan, Banten</span>
+                        </li>
+                        <li style="display:flex; gap:12px; margin-bottom:16px;">
+                            <i class="fa-solid fa-phone" style="color:var(--accent); margin-top:4px;"></i>
+                            <span>+62 811-0000-1234</span>
+                        </li>
+                        <li style="display:flex; gap:12px;">
+                            <i class="fa-solid fa-envelope" style="color:var(--accent); margin-top:4px;"></i>
+                            <span>info@nuvaraproperti.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span style="font-size:14px;">&copy; 2026 PT Nuvara Properti Indonesia. All rights reserved.</span>
+                <span style="font-size:14px;">
+                    <a href="#" style="margin-right:16px;">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+    <script src="style2-simple.js"></script>
+</body>
+
+</html>

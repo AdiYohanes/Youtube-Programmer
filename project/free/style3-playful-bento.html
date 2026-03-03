@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvara Residence — Playful Bento Style</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style3-playful-bento.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="#" class="brand"><i class="fa-solid fa-shapes"></i> Nuvara</a>
+            <div class="nav-links">
+                <a href="#about">Tentang</a>
+                <a href="#units">Tipe Unit</a>
+                <a href="#gallery">Galeri</a>
+                <a href="#facilities">Fasilitas</a>
+                <a href="#location">Lokasi</a>
+            </div>
+            <a href="#contact" class="btn btn-primary">Daftar Minat</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="container" id="hero">
+        <div class="hero-grid">
+            <div class="bento-card hero-main">
+                <h1>Your Happy Place Starts Here.</h1>
+                <p>Temukan keseimbangan hidup yang menyenangkan dalam kawasan asri dengan fasilitas premium dan
+                    warna-warni kehidupan baru di jantung Serpong.</p>
+                <div>
+                    <a href="#units" class="btn btn-primary" style="margin-right:16px;">Lihat Tipe Rumah</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-download"
+                            style="margin-right:8px;"></i> Brosur</a>
+                </div>
+            </div>
+            <div class="bento-card hero-stats">
+                <h2>215+</h2>
+                <p>Unit Terjual</p>
+                <i class="fa-solid fa-house-circle-check"
+                    style="font-size: 40px; color: var(--primary); margin-top: 24px;"></i>
+            </div>
+            <div class="bento-card hero-img"></div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="container">
+        <div class="section-header">
+            <h2>Mengenal Nuvara</h2>
+            <p>Harmoni tempat tinggal yang dirancang penuh keceriaan.</p>
+        </div>
+        <div class="about-grid">
+            <div class="bento-card about-img"></div>
+            <div class="bento-card about-text">
+                <h2>Investasi Ceria Untuk Masa Depan</h2>
+                <p>Dikembangkan oleh PT. Nuvara Properti Indonesia, kami menciptakan hunian dengan tata ruang fungsional
+                    namun tidak membosankan. Cocok untuk keluarga muda dinamis.</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> Desain Arsitektur Fun & Fleksibel</li>
+                    <li><i class="fa-solid fa-check"></i> Keamanan Terpadu 24 Jam</li>
+                    <li><i class="fa-solid fa-check"></i> Lingkungan Hijau Bebas Banjir</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- UNITS -->
+    <section id="units" class="container">
+        <div class="section-header">
+            <h2>Pilihan Ruang Bahagia</h2>
+            <p>Bebas pilih tipe sesuai dengan ukuran keluarga kecilmu.</p>
+        </div>
+        <div class="units-grid">
+            <!-- Unit 1 -->
+            <div class="bento-card unit-card">
+                <div class="unit-img">
+                    <span class="price-badge">Rp 850 Jt</span>
+                    <img src="https://picsum.photos/seed/house1/600/400" alt="Type 36">
+                </div>
+                <div class="unit-info">
+                    <h3>Tipe 36 / 72 - Essential</h3>
+                    <p>Kompak, fungsional, dan asyik untuk pasangan baru.</p>
+                    <div class="unit-specs">
+                        <div class="spec"><i class="fa-solid fa-bed"></i> 2</div>
+                        <div class="spec"><i class="fa-solid fa-bath"></i> 1</div>
+                        <div class="spec"><i class="fa-solid fa-car"></i> 1</div>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="width:100%;">Tanya Detail</a>
+                </div>
+            </div>
+
+            <!-- Unit 2 -->
+            <div class="bento-card unit-card" style="border: 2px solid var(--primary); position: relative;">
+                <span class="featured-badge"
+                    style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 6px 20px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; z-index: 10;">Paling
+                    Diminati</span>
+                <div class="unit-img">
+                    <span class="price-badge">Rp 1.2 M</span>
+                    <img src="https://picsum.photos/seed/house2/600/400" alt="Type 45">
+                </div>
+                <div class="unit-info">
+                    <h3>Tipe 45 / 90 - Comfort</h3>
+                    <p>Ada ruang bernapas lega dengan taman belakang mini.</p>
+                    <div class="unit-specs">
+                        <div class="spec"><i class="fa-solid fa-bed"></i> 2</div>
+                        <div class="spec"><i class="fa-solid fa-bath"></i> 2</div>
+                        <div class="spec"><i class="fa-solid fa-car"></i> 1</div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" style="width:100%;">Tanya Detail</a>
+                </div>
+            </div>
+
+            <!-- Unit 3 -->
+            <div class="bento-card unit-card">
+                <div class="unit-img">
+                    <span class="price-badge">Rp 1.8 M</span>
+                    <img src="https://picsum.photos/seed/house3/600/400" alt="Type 60">
+                </div>
+                <div class="unit-info">
+                    <h3>Tipe 60 / 120 - Signature</h3>
+                    <p>Lantai dua extra seru buat bersantai sambil nikmatin udara segar.</p>
+                    <div class="unit-specs">
+                        <div class="spec"><i class="fa-solid fa-bed"></i> 3</div>
+                        <div class="spec"><i class="fa-solid fa-bath"></i> 2</div>
+                        <div class="spec"><i class="fa-solid fa-car"></i> 2</div>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="width:100%;">Tanya Detail</a>
+                </div>
+            </div>
+
+            <!-- Unit 4 -->
+            <div class="bento-card unit-card">
+                <div class="unit-img">
+                    <span class="price-badge">Rp 2.6 M</span>
+                    <img src="https://picsum.photos/seed/house4/600/400" alt="Type 90">
+                </div>
+                <div class="unit-info">
+                    <h3>Tipe 90 / 180 - The Grand</h3>
+                    <p>Bebas berkreasi dengan space jumbo yang nyaman & elegan.</p>
+                    <div class="unit-specs">
+                        <div class="spec"><i class="fa-solid fa-bed"></i> 4</div>
+                        <div class="spec"><i class="fa-solid fa-bath"></i> 3</div>
+                        <div class="spec"><i class="fa-solid fa-car"></i> 2</div>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="width:100%;">Tanya Detail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY BENTO -->
+    <section id="gallery" class="container">
+        <div class="section-header">
+            <h2>Inspirasi Sudut</h2>
+            <p>Jatuh cinta dari pandangan pertama ke interor kami.</p>
+        </div>
+        <div class="gallery-bento">
+            <div class="gb-item gb-1"><img src="https://picsum.photos/seed/int1/800/800" alt="Living"></div>
+            <div class="gb-item gb-2"><img src="https://picsum.photos/seed/int2/800/400" alt="Kitchen"></div>
+            <div class="gb-item gb-3"><img src="https://picsum.photos/seed/int3/400/400" alt="Kitchen"></div>
+            <div class="gb-item gb-4" style="flex-direction: column; gap: 8px;">
+                <h2 style="font-size: 48px; margin-bottom: 0; color: #fff;">6+</h2>
+                <p style="color: #fff; font-weight: 700; font-size: 18px; line-height: 1.3; opacity: 0.9;">Ruangan
+                    Premium<br>Per Unit</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITIES -->
+    <section id="facilities" class="container">
+        <div class="section-header">
+            <h2>Apa Yang Kamu Dapat?</h2>
+            <p>Kelengkapan hardware canggih untuk mempermudah hidup.</p>
+        </div>
+        <div class="fac-grid">
+            <div class="bento-card fac-item">
+                <div class="fac-icon bg-yellow-icon"><i class="fa-solid fa-car"></i></div>
+                <h3>Carport Luas</h3>
+                <p>Muat 2 SUV standar</p>
+            </div>
+            <div class="bento-card fac-item">
+                <div class="fac-icon bg-coral-icon"><i class="fa-solid fa-leaf"></i></div>
+                <h3>Taman Privat</h3>
+                <p>Hijau di palka belakang</p>
+            </div>
+            <div class="bento-card fac-item">
+                <div class="fac-icon bg-cyan-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3>Digital Lock</h3>
+                <p>Kunci rumah dari HP</p>
+            </div>
+            <div class="bento-card fac-item">
+                <div class="fac-icon bg-green-icon"><i class="fa-solid fa-box-archive"></i></div>
+                <h3>Ruang Simpan</h3>
+                <p>Storage tersembunyi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="container">
+        <div class="loc-grid">
+            <div class="bento-card map-visual">
+                <img src="https://picsum.photos/seed/map/1000/600" alt="Map">
+            </div>
+            <div class="bento-card loc-text">
+                <h2>Kemana-mana Dekat!</h2>
+                <ul class="loc-list">
+                    <li><i class="fa-solid fa-road"></i> 2 KM ke Pintu Tol</li>
+                    <li><i class="fa-solid fa-bag-shopping"></i> 4 KM ke AEON Mall</li>
+                    <li><i class="fa-solid fa-train"></i> 3 KM ke Stasiun KRL</li>
+                    <li><i class="fa-solid fa-graduation-cap"></i> 6 KM ke Sekolah Global</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="container">
+        <div class="section-header">
+            <h2>Curhatan Tetangga Baru</h2>
+            <p>Mendengar langsung dari mereka yang telah pindah.</p>
+        </div>
+        <div class="testi-row">
+            <div class="bento-card testi-card" style="background:var(--bento-1); color:#000;">
+                <p class="testi-quote" style="color:#000;">"Seru banget! Anak-anak seneng lari-larian di clubhouse
+                    sore-sore. Tata ruang
+                    rumah juga gak kaku."</p>
+                <div class="testi-author">
+                    <img src="https://picsum.photos/seed/face1/100/100" alt="User">
+                    <div>
+                        <h4>Bunda Arsy</h4>
+                        <p>Penghuni Tipe 60</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-card testi-card" style="background:var(--bento-2); color:#000;">
+                <p class="testi-quote" style="color:#000;">"Kualitas bangunannya beda, finishingnya rapih. Desainnya
+                    cheerful cocok buat
+                    vibe millenials."</p>
+                <div class="testi-author">
+                    <img src="https://picsum.photos/seed/face2/100/100" alt="User">
+                    <div>
+                        <h4>Mas Danu</h4>
+                        <p>Penghuni Tipe 45</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-card testi-card" style="background:var(--bento-1); color:#000;">
+                <p class="testi-quote" style="color:#000;">"Security-nya ramah tapi tetap tegas 24 jam. Pokoknya
+                    lingkungan aman dan asri
+                    banget buat nge-chill."</p>
+                <div class="testi-author">
+                    <img src="https://picsum.photos/seed/face3/100/100" alt="User">
+                    <div>
+                        <h4>Keluarga Riko</h4>
+                        <p>Penghuni Tipe 90</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="container">
+        <div class="bento-card cta-box">
+            <div class="cta-content">
+                <h2>Yuk, Main Dulu Aja.</h2>
+                <p>Janji temu untuk lihat rumah contoh gratis tanpa komitmen. Special bonus buat yang deal bulan ini!
+                </p>
+                <a href="#" class="btn btn-outline"
+                    style="color:var(--primary); font-size:20px; padding: 20px 48px;">Hubungi via WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="container footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand"><i class="fa-solid fa-shapes"></i> Nuvara</div>
+                <p style="margin-bottom: 16px;">Kawasan hunian paling cheerful dan produktif di tengah Serpong.
+                    Menggabungkan unsur alam dan desain dinamis untuk keluarga modern.</p>
+                <p style="color: var(--text-muted); font-weight: 600; font-size: 14px;"><i
+                        class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Marketing Gallery:<br>Jl.
+                    Boulevard Serpong Raya No. 1</p>
+                <div class="socials">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Tipe Rumah</h4>
+                <ul>
+                    <li><a href="#">T-36 Essential</a></li>
+                    <li><a href="#">T-45 Comfort</a></li>
+                    <li><a href="#">T-60 Signature</a></li>
+                    <li><a href="#">T-90 The Grand</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Jelajah</h4>
+                <ul>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#facilities">Fasilitas</a></li>
+                    <li><a href="#location">Lokasi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontak</h4>
+                <ul style="color:var(--text-muted); font-weight:600;">
+                    <li><i class="fa-solid fa-building" style="margin-right:8px;"></i> PT Nuvara Properti</li>
+                    <li><i class="fa-solid fa-phone" style="margin-right:8px;"></i> +62 811-0000-1234</li>
+                    <li><i class="fa-solid fa-location-dot" style="margin-right:8px;"></i> Serpong, Tangerang</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
