@@ -1,0 +1,565 @@
+:root {
+    --valorant-red: #ff4655;
+    --valorant-dark: #111111;
+    --valorant-light: #ece8e1;
+    --valorant-grey: #2e2e2e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--valorant-dark);
+    background: radial-gradient(circle at center, #2e2e2e 0%, var(--valorant-dark) 80%);
+    color: var(--valorant-light);
+    overflow: hidden;
+}
+
+/* Typography styles */
+h1,
+.logo,
+.sidebar-inner,
+.role,
+.btn-text,
+.play-now {
+    font-family: 'Tungsten', 'Impact', sans-serif;
+    text-transform: uppercase;
+}
+
+/* Background Grid Overlay */
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 200vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    pointer-events: none;
+    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px);
+    }
+
+    100% {
+        transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px);
+    }
+}
+
+/* Header */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    color: var(--valorant-light);
+    position: relative;
+    cursor: pointer;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 8px;
+    height: 100%;
+    background-color: var(--valorant-red);
+}
+
+.nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav a {
+    color: var(--valorant-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav a:not(.play-now):hover {
+    color: var(--valorant-red);
+}
+
+.nav a:not(.play-now)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--valorant-red);
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav a:not(.play-now):hover::after {
+    width: 100%;
+}
+
+.play-now {
+    font-size: 1.5rem !important;
+    background-color: var(--valorant-red);
+    padding: 10px 30px !important;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    transition: transform 0.3s ease, background-color 0.3s ease !important;
+}
+
+.play-now:hover {
+    transform: scale(1.05) translateY(-2px);
+    background-color: #ff5b68;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Smooth Slide Transitions using Clip-path instead of just Opacity */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.slide.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    z-index: 10;
+}
+
+/* Background Image */
+.slide-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -2;
+}
+
+.slide.active .slide-bg {
+    opacity: 0.15;
+    transform: translate(-50%, -50%) scale(1.05);
+    /* Slow zoom effect base */
+    animation: bgPulse 10s ease-in-out infinite alternate 1.5s;
+}
+
+@keyframes bgPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Character Wrapper for Parallax */
+.character-wrapper {
+    position: absolute;
+    bottom: -50px;
+    right: 5%;
+    height: 115%;
+    width: 50%;
+    z-index: 5;
+    /* transition is applied dynamically via JS for smooth parallax return */
+    transition: transform 0.1s ease-out;
+}
+
+/* Character Model & floating Animation */
+.character-model {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: translateX(100px) scale(0.95);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+    filter: drop-shadow(-20px 20px 30px rgba(0, 0, 0, 0.8));
+}
+
+.slide.active .character-model {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    animation: characterFloat 6s ease-in-out infinite alternate;
+    animation-delay: 1.3s;
+}
+
+@keyframes characterFloat {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+
+    100% {
+        transform: translateY(-20px) scale(1.02);
+    }
+}
+
+.character-jett {
+    right: -5%;
+}
+
+.character-phoenix {
+    right: 0%;
+    transform-origin: bottom center;
+}
+
+.character-sage {
+    right: 0%;
+    transform-origin: bottom center;
+}
+
+/* Slide Content */
+.slide-content {
+    max-width: 800px;
+    padding: 0 100px;
+    z-index: 20;
+    position: relative;
+    pointer-events: none;
+    /* Let clicks pass through empty space */
+}
+
+/* Staggered Content Reveal */
+.stagger-item {
+    overflow: hidden;
+    margin-bottom: 5px;
+    padding: 5px 0;
+    pointer-events: auto;
+    /* Re-enable clicks on content */
+}
+
+.stagger-item>* {
+    display: block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.2, 1),
+        opacity 0.6s ease;
+}
+
+.slide.active .stagger-item:nth-child(1)>* {
+    transition-delay: 0.6s;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide.active .stagger-item:nth-child(2)>* {
+    transition-delay: 0.75s;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide.active .stagger-item:nth-child(3)>* {
+    transition-delay: 0.9s;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide.active .stagger-item:nth-child(4)>* {
+    transition-delay: 1.05s;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.role {
+    font-size: 1.8rem;
+    color: var(--valorant-red);
+    letter-spacing: 4px;
+    position: relative;
+    display: inline-block;
+    padding-left: 30px;
+}
+
+.role::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: var(--valorant-red);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%);
+}
+
+.name {
+    font-size: 11vw;
+    /* Responsive huge text */
+    line-height: 0.85;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(236, 232, 225, 0.3);
+    /* Subtle outline */
+    position: relative;
+}
+
+.name::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--valorant-light);
+    -webkit-text-stroke: 0;
+    width: 0;
+    overflow: hidden;
+    transition: width 1.2s cubic-bezier(0.86, 0, 0.07, 1);
+    transition-delay: 1.1s;
+    /* Fill after staggered slide-up */
+    white-space: nowrap;
+}
+
+.slide.active .name::before {
+    width: 100%;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+    color: #e0e0e0;
+    font-weight: 400;
+    border-left: 2px solid rgba(255, 70, 85, 0.4);
+    padding-left: 20px;
+}
+
+/* Styled Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 45px;
+    background-color: transparent;
+    color: var(--valorant-light);
+    text-decoration: none;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid rgba(236, 232, 225, 0.4);
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+
+.btn-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--valorant-red);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn:hover .btn-bg {
+    transform: scaleX(1);
+}
+
+.btn:hover .btn-text {
+    color: var(--valorant-light);
+}
+
+/* Decor text on the side */
+.sidebar-text {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right center;
+    color: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.sidebar-inner {
+    font-size: 8vw;
+    white-space: nowrap;
+    letter-spacing: 25px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1) 1.5s;
+    /* Delay until end of sequence */
+}
+
+/* Since there's only one sidebar text, we just reveal it when body is loaded */
+body.loaded .sidebar-inner {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Slider Controls */
+.slider-controls {
+    position: absolute;
+    bottom: 60px;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    z-index: 20;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--valorant-light);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.nav-btn:hover {
+    background-color: var(--valorant-light);
+    border-color: var(--valorant-light);
+    color: var(--valorant-dark);
+    transform: scale(1.05);
+}
+
+.indicators {
+    display: flex;
+    gap: 15px;
+}
+
+.dot {
+    width: 30px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--valorant-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dot.active {
+    width: 70px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dot.active::after {
+    transform: scaleX(1);
+    transition-duration: 7s;
+    /* Sync with autoPlay interval */
+    transition-timing-function: linear;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+    .name {
+        font-size: 15vw;
+    }
+
+    .character-wrapper {
+        width: 60%;
+        right: -5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 30px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    /* keep it simple for mobile on this demo */
+    .slide-content {
+        padding: 0 40px;
+        margin-top: -100px;
+    }
+
+    .character-wrapper {
+        opacity: 0.5;
+        right: -20%;
+    }
+
+    /* push character back */
+    .slider-controls {
+        left: 40px;
+        bottom: 40px;
+    }
+
+    .sidebar-text {
+        display: none;
+    }
+}
