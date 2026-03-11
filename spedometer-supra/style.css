@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1a1a24 0%, #050505 70%);
+}
+
+.bg-glow {
+    position: absolute;
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(255, 50, 50, 0.1), transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cluster {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background: linear-gradient(180deg, #111 0%, #0a0a0c 100%);
+    border: 2px solid #222;
+    border-radius: 40px;
+    padding: 30px 50px;
+    box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.9),
+        0 10px 40px rgba(0, 0, 0, 0.8),
+        0 0 100px rgba(255, 50, 50, 0.05);
+}
+
+/* SIDE PANELS */
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 350px;
+    width: 120px;
+    opacity: 0;
+    /* Hidden for startup animation */
+    transform: translateY(20px);
+}
+
+.turn-signal {
+    width: 40px;
+    height: 40px;
+    color: #222;
+    /* off state */
+    transition: color 0.1s;
+}
+
+.turn-signal.blink {
+    color: #00ff00;
+    filter: drop-shadow(0 0 10px #00ff00);
+}
+
+.info-group {
+    text-align: center;
+}
+
+.info-label {
+    font-size: 14px;
+    color: #888;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.info-value .unit {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* VERTICAL GAUGES (Fuel/Temp) */
+.vertical-gauge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.gauge-icon {
+    font-size: 20px;
+    filter: grayscale(1);
+    opacity: 0.7;
+}
+
+.v-bar-track {
+    width: 8px;
+    height: 120px;
+    background: #1a1a24;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.v-bar-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    border-radius: 4px;
+    transition: height 1s ease-out;
+}
+
+.fuel-fill {
+    background: linear-gradient(to top, #ff3333 0%, #ffcc00 20%, #00ccff 100%);
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+}
+
+.temp-fill {
+    background: linear-gradient(to top, #00ccff 0%, #ffcc00 60%, #ff3333 100%);
+    box-shadow: 0 0 10px rgba(255, 50, 50, 0.5);
+}
+
+.gauge-markers {
+    position: absolute;
+    right: -25px;
+    top: 30px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: bold;
+    color: #aaa;
+}
+
+.left-panel .gauge-markers {
+    right: auto;
+    left: -25px;
+}
+
+.gauge-markers .red {
+    color: #ff3333;
+}
+
+.assist-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+    opacity: 0.2;
+}
+
+.assist-icons .active {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+/* CENTER PANEL */
+.center-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.speedometer-wrapper {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.speedometer-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(135deg);
+}
+
+/* Tracks */
+.track-bg {
+    fill: none;
+    stroke: #1a1a24;
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-dasharray: 801;
+    stroke-dashoffset: 267;
+    opacity: 0;
+    /* Hidden for startup animation */
+}
+
+.speed-track {
+    fill: none;
+    stroke: url(#glowGradient);
+    stroke-width: 20;
+    stroke-linecap: round;
+    stroke-dasharray: 801;
+    stroke-dashoffset: 801;
+    filter: url(#neonGlow);
+    opacity: 0;
+    /* Hidden for startup animation */
+    /* GSAP takes over entirely */
+}
+
+/* RPM TRACK */
+.rpm-track-bg {
+    fill: none;
+    stroke: #1a1a24;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 565;
+    stroke-dashoffset: 188;
+    opacity: 0;
+    /* Hidden for startup animation */
+}
+
+.rpm-track {
+    fill: none;
+    stroke: #ffcc00;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 754;
+    stroke-dashoffset: 754;
+    filter: drop-shadow(0 0 5px #ffcc00);
+    opacity: 0;
+    /* Hidden for startup animation */
+}
+
+.rpm-track.redline {
+    stroke: #ff3333;
+    filter: drop-shadow(0 0 8px #ff3333);
+}
+
+/* RPM Labels */
+.rpm-labels {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+}
+
+.rpm-labels span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-weight: bold;
+    font-size: 16px;
+    color: #aaa;
+    transform-origin: 0 0;
+}
+
+.rpm-labels .red {
+    color: #ff3333;
+}
+
+/* Ticks */
+.tick-line {
+    stroke: #444;
+    stroke-width: 2;
+}
+
+.tick-text {
+    fill: #ccc;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.tick-line.major {
+    stroke: #fff;
+    stroke-width: 3;
+}
+
+.tick-line.redline {
+    stroke: #ff3333;
+}
+
+.tick-text.redline {
+    fill: #ff3333;
+    text-shadow: 0 0 5px rgba(255, 50, 50, 0.8);
+}
+
+/* Center Display Text */
+.center-display {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transform: translateY(-10px) scale(0.9);
+    /* Add scale for animation */
+    opacity: 0;
+    /* Hidden for startup animation */
+}
+
+.gear-indicator {
+    display: flex;
+    gap: 12px;
+    font-size: 22px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.gear-indicator .active {
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.gear-indicator .manual {
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00;
+    display: none;
+}
+
+.speed-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 85px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.speed-unit {
+    font-size: 18px;
+    font-weight: 700;
+    color: #aaa;
+    letter-spacing: 2px;
+}
+
+.drive-mode {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff3333;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(255, 50, 50, 0.6);
+    background: rgba(255, 50, 50, 0.1);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    padding: 2px 15px;
+    border-radius: 20px;
+}
+
+/* Needle */
+.needle-container {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    z-index: 5;
+    transform: rotate(-135deg);
+    opacity: 0;
+    /* Hidden for startup animation */
+}
+
+.needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 30%, #ff3333 80%, #fff 100%);
+    transform-origin: 0% 50%;
+    transform: translateY(-50%) rotate(0deg);
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 0 8px rgba(255, 50, 50, 0.8);
+}
+
+.needle::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 7px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+}
+
+.needle-center {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background: #111;
+    border: 2px solid #333;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
+/* BOTTOM INFO */
+.bottom-info {
+    position: absolute;
+    bottom: -15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    opacity: 0;
+    /* Hidden for startup animation */
+    transform: translateY(10px);
+}
+
+.warning-lights {
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+}
+
+.warning-lights .icon {
+    opacity: 0.15;
+    filter: grayscale(1);
+    transition: all 0.2s;
+}
+
+.warning-lights .icon.active {
+    opacity: 1;
+    filter: grayscale(0) drop-shadow(0 0 5px currentColor);
+}
+
+.odometer {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    color: #888;
+    letter-spacing: 1px;
+}
