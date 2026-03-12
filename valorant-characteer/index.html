@@ -4,21 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valorant Character Slider</title>
+    <title>VALORANT Agents</title>
+    <meta name="description" content="Explore all Valorant agents — their roles, abilities, and lore. An immersive agent showcase powered by the Valorant API.">
     <link rel="stylesheet" href="style.css">
-    <!-- Tungsten font for Valorant headings -->
-    <link href="https://fonts.cdnfonts.com/css/tungsten" rel="stylesheet">
-    <!-- Default font fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;300;400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="hero" id="hero">
-        <!-- Background decorative grid overlay -->
+
+    <!-- ===================== LOADER ===================== -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">VALORANT</div>
+        <div class="loader-bar-track">
+            <div class="loader-bar" id="loaderBar"></div>
+        </div>
+        <div class="loader-status" id="loaderStatus">LOADING AGENTS...</div>
+    </div>
+
+    <!-- ===================== MAIN APP ===================== -->
+    <div class="app" id="app">
+
+        <!-- Particles Canvas -->
+        <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+        <!-- Background gradient overlay (changes per agent) -->
+        <div class="bg-gradient" id="bgGradient"></div>
+
+        <!-- Decorative grid -->
         <div class="grid-overlay"></div>
 
+        <!-- ===== HEADER ===== -->
         <header class="header">
-            <div class="logo-wrapper">
-                <div class="logo">VALORANT</div>
+            <div class="logo" id="logo">
+                <span class="logo-bar"></span>
+                VALORANT
             </div>
             <nav class="nav">
                 <a href="#">AGENTS</a>
@@ -28,111 +47,87 @@
             </nav>
         </header>
 
-        <div class="slider-container">
-            <!-- Slides -->
-            <div class="slides">
-                <!-- Slide 1: Jett -->
-                <div class="slide active">
-                    <div class="slide-bg" style="background-image: url('assets/jett-bg.png');"></div>
-
-                    <div class="character-wrapper">
-                        <img src="assets/jett-portrait.png" alt="Jett" class="character-model character-jett">
-                    </div>
-
-                    <div class="slide-content">
-                        <div class="stagger-item">
-                            <div class="role">DUELIST</div>
-                        </div>
-                        <div class="stagger-item">
-                            <h1 class="name">JETT</h1>
-                        </div>
-                        <div class="stagger-item">
-                            <p class="description">Representing her home country of South Korea, Jett's agile and
-                                evasive fighting style lets her take risks no one else can. She runs circles around
-                                every skirmish, cutting enemies up before they even know what hit them.</p>
-                        </div>
-                        <div class="stagger-item"><a href="#" class="btn"><span class="btn-text">DISCOVER
-                                    JETT</span><span class="btn-bg"></span></a></div>
-                    </div>
-                </div>
-
-                <!-- Slide 2: Phoenix -->
-                <div class="slide">
-                    <div class="slide-bg" style="background-image: url('assets/phoenix-bg.png');"></div>
-
-                    <div class="character-wrapper">
-                        <img src="assets/phoenix-portrait.png" alt="Phoenix" class="character-model character-phoenix">
-                    </div>
-
-                    <div class="slide-content">
-                        <div class="stagger-item">
-                            <div class="role">DUELIST</div>
-                        </div>
-                        <div class="stagger-item">
-                            <h1 class="name">PHOENIX</h1>
-                        </div>
-                        <div class="stagger-item">
-                            <p class="description">Hailing from the U.K., Phoenix's star power shines through in his
-                                fighting style, igniting the battlefield with flash and flare. Whether he's got backup
-                                or not, he's rushing in to fight on his own terms.</p>
-                        </div>
-                        <div class="stagger-item"><a href="#" class="btn"><span class="btn-text">DISCOVER
-                                    PHOENIX</span><span class="btn-bg"></span></a></div>
-                    </div>
-                </div>
-
-                <!-- Slide 3: Sage -->
-                <div class="slide">
-                    <div class="slide-bg" style="background-image: url('assets/sage-bg.png');"></div>
-
-                    <div class="character-wrapper">
-                        <img src="assets/sage-portrait.png" alt="Sage" class="character-model character-sage">
-                    </div>
-
-                    <div class="slide-content">
-                        <div class="stagger-item">
-                            <div class="role">SENTINEL</div>
-                        </div>
-                        <div class="stagger-item">
-                            <h1 class="name">SAGE</h1>
-                        </div>
-                        <div class="stagger-item">
-                            <p class="description">The stronghold of China, Sage creates safety for herself and her team
-                                wherever she goes. Able to revive fallen friends and stave off forceful assaults, she
-                                provides a calm center to a hellish battlefield.</p>
-                        </div>
-                        <div class="stagger-item"><a href="#" class="btn"><span class="btn-text">DISCOVER
-                                    SAGE</span><span class="btn-bg"></span></a></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Controls -->
-            <div class="slider-controls">
-                <button class="nav-btn prev-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                </button>
-                <div class="indicators">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-                <button class="nav-btn next-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 18l6-6-6-6" />
-                    </svg>
-                </button>
-            </div>
-
-            <div class="sidebar-text">
-                <div class="sidebar-inner">DEFY THE LIMITS</div>
-            </div>
+        <!-- ===== ROLE FILTER ===== -->
+        <div class="role-filter" id="roleFilter">
+            <button class="role-btn active" data-role="all">ALL</button>
+            <button class="role-btn" data-role="Duelist">DUELIST</button>
+            <button class="role-btn" data-role="Initiator">INITIATOR</button>
+            <button class="role-btn" data-role="Controller">CONTROLLER</button>
+            <button class="role-btn" data-role="Sentinel">SENTINEL</button>
         </div>
+
+        <!-- ===== MAIN HERO ===== -->
+        <main class="hero" id="hero">
+
+            <!-- Character image area -->
+            <div class="character-area" id="characterArea">
+                <div class="character-bg-img" id="characterBgImg"></div>
+                <div class="character-img-wrap" id="characterImgWrap">
+                    <img class="character-portrait" id="characterPortrait" src="" alt="">
+                    <div class="character-glow" id="characterGlow"></div>
+                </div>
+            </div>
+
+            <!-- Content panel -->
+            <div class="content-panel" id="contentPanel">
+                <div class="content-inner">
+                    <div class="stagger-item" id="si1">
+                        <div class="role-badge" id="roleBadge">
+                            <img class="role-icon" id="roleIcon" src="" alt="">
+                            <span id="roleName">DUELIST</span>
+                        </div>
+                    </div>
+                    <div class="stagger-item" id="si2">
+                        <h1 class="agent-name" id="agentName">JETT</h1>
+                    </div>
+                    <div class="stagger-item" id="si3">
+                        <p class="agent-desc" id="agentDesc">Loading...</p>
+                    </div>
+                    <div class="stagger-item" id="si4">
+                        <div class="abilities-row" id="abilitiesRow"></div>
+                    </div>
+                    <div class="stagger-item" id="si5">
+                        <a href="#" class="btn" id="discoverBtn">
+                            <span class="btn-bg"></span>
+                            <span class="btn-text" id="discoverBtnText">DISCOVER</span>
+                            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ===== AGENT NUMBER ===== -->
+        <div class="agent-counter" id="agentCounter">
+            <span id="currentIndex">01</span>
+            <span class="counter-sep"></span>
+            <span id="totalCount">25</span>
+        </div>
+
+        <!-- ===== SIDEBAR TEXT ===== -->
+        <div class="sidebar-text"><div class="sidebar-inner">DEFY THE LIMITS</div></div>
+
+        <!-- ===== GLITCH OVERLAY (for transition effect) ===== -->
+        <div class="glitch-overlay" id="glitchOverlay"></div>
+
+        <!-- ===== SLIDER CONTROLS ===== -->
+        <div class="slider-controls">
+            <button class="nav-btn prev-btn" id="prevBtn" aria-label="Previous agent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <div class="indicators" id="indicators"></div>
+            <button class="nav-btn next-btn" id="nextBtn" aria-label="Next agent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+
+        <!-- ===== AGENT THUMBNAIL STRIP ===== -->
+        <div class="thumb-strip-wrap">
+            <div class="thumb-strip" id="thumbStrip"></div>
+        </div>
+
     </div>
 
-    <!-- GSAP for smoother animations if ever needed, though we use vanilla CSS primarily -->
     <script src="script.js"></script>
 </body>
 
