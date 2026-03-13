@@ -153,8 +153,8 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
 /* ─── APP SHELL ──────────────────────────────────────────────── */
 .app {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden; /* FIX: clip everything inside the viewport */
 }
 
@@ -198,6 +198,7 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
     z-index: 0;
     transform: perspective(700px) rotateX(55deg) translateY(-10%) translateZ(-100px);
     animation: gridScroll 20s linear infinite;
+    will-change: transform;
 }
 
 @keyframes gridScroll {
@@ -335,13 +336,15 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
     align-items: center;
     z-index: 5;
     pointer-events: none;
+    width: 100%;
+    height: 100%;
 }
 
 /* Character Area */
 .character-area {
     position: absolute;
-    right: 0; bottom: 0;
-    width: 55%;
+    right: 5%; bottom: 0;
+    width: 65%;
     height: 100%;
     z-index: 5;
     pointer-events: none;
@@ -371,13 +374,14 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
     opacity: 0;
     filter: blur(4px) brightness(0.4);
     transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+    will-change: transform, opacity, filter;
 }
 
 .character-img-wrap {
     position: absolute;
-    bottom: -5%;
-    right: 2%;
-    width: 90%;
+    bottom: -15%;
+    right: 0%;
+    width: 100%;
     height: 110%;
     display: flex;
     align-items: flex-end;
@@ -398,6 +402,7 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
                 opacity  0.7s ease 0.15s;
     position: relative;
     z-index: 5;
+    will-change: transform, opacity;
 }
 
 .character-glow {
@@ -427,15 +432,15 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
 }
 
 .app.loaded .character-portrait {
-    transform: translateX(0) scale(1);
+    transform: translateX(0) scale(1.15);
     opacity: 1;
     animation: charFloat 7s ease-in-out infinite alternate;
     animation-delay: 0.8s;
 }
 
 @keyframes charFloat {
-    0%   { transform: translateY(0) scale(1); }
-    100% { transform: translateY(-20px) scale(1.018); }
+    0%   { transform: translateY(0) scale(1.15); }
+    100% { transform: translateY(-20px) scale(1.18); }
 }
 
 /* ─── GLITCH TRANSITION OVERLAY ──────────────────────────────── */
@@ -466,9 +471,33 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
 .content-panel {
     position: relative;
     z-index: 20;
-    padding: 0 60px;
-    max-width: 600px;
+    padding: 0 40px 0 80px;
+    max-width: 650px;
     pointer-events: auto;
+}
+
+.content-panel::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: -20px;
+    bottom: -20px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 70, 85, 0.8), transparent);
+    box-shadow: 0 0 15px var(--red);
+}
+
+.content-panel::after {
+    content: '';
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--red);
+    box-shadow: 0 0 15px var(--red);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* diamond */
 }
 
 .content-inner { display: flex; flex-direction: column; gap: 6px; }
@@ -477,17 +506,11 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
 /* Only clip slide-up stagger – not the giant heading row */
 .stagger-item:not(#si2) { overflow: hidden; }
 
+/* Elements will be animated entirely by GSAP now */
 .stagger-item > * {
-    transform: translateY(110%);
     opacity: 0;
-    transition: transform 0.85s cubic-bezier(0.25, 1, 0.2, 1), opacity 0.65s ease;
+    will-change: transform, opacity;
 }
-
-.animate-in .stagger-item:nth-child(1) > * { transition-delay: 0.10s; transform: translateY(0); opacity: 1; }
-.animate-in .stagger-item:nth-child(2) > * { transition-delay: 0.22s; transform: translateY(0); opacity: 1; }
-.animate-in .stagger-item:nth-child(3) > * { transition-delay: 0.34s; transform: translateY(0); opacity: 1; }
-.animate-in .stagger-item:nth-child(4) > * { transition-delay: 0.46s; transform: translateY(0); opacity: 1; }
-.animate-in .stagger-item:nth-child(5) > * { transition-delay: 0.58s; transform: translateY(0); opacity: 1; }
 
 /* Role badge */
 .role-badge {
@@ -552,29 +575,19 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
 
 /* Agent description */
 .agent-desc {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 400;
-    line-height: 1.8;
-    max-width: 440px;
-    color: rgba(236, 232, 225, 0.6);
-    border-left: 2px solid rgba(255, 70, 85, 0.3);
-    padding-left: 18px;
+    line-height: 1.7;
+    max-width: 480px;
+    color: rgba(236, 232, 225, 0.85);
+    background: rgba(10, 20, 32, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--red);
+    padding: 16px 20px;
+    border-radius: 4px;
     position: relative;
-}
-
-.agent-desc::before {
-    content: '';
-    position: absolute;
-    left: -1px; top: 0;
-    width: 2px; height: 35%;
-    background: var(--red);
-    box-shadow: 0 0 10px var(--red-glow);
-    animation: descLine 3s ease-in-out infinite alternate;
-}
-
-@keyframes descLine {
-    from { height: 30%; top: 0%; }
-    to   { height: 30%; top: 70%; }
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* Abilities row */
@@ -594,15 +607,15 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
 }
 
 .ability-icon-wrap {
-    width: 46px; height: 46px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 52px; height: 52px;
+    border: 1px solid rgba(255, 70, 85, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
-    background: rgba(255, 255, 255, 0.03);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    background: rgba(10, 20, 32, 0.6);
     backdrop-filter: blur(8px);
-    transition: all var(--transition-fast);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
     position: relative;
     overflow: hidden;
 }
@@ -620,26 +633,29 @@ h1, .logo, .role-badge, .btn-text, .play-now, .role-btn, .agent-name {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--red);
+    background: linear-gradient(135deg, var(--red), #c0263a);
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     z-index: 0;
 }
 
-.ability-icon-wrap:hover { border-color: var(--red); box-shadow: 0 0 18px rgba(255,70,85,0.25); }
+.ability-icon-wrap:hover { border-color: var(--red); box-shadow: 0 0 18px rgba(255,70,85,0.4); }
 .ability-icon-wrap:hover::before { opacity: 1; }
 .ability-icon-wrap:hover::after { transform: translateY(0); }
 
 .ability-icon-wrap img {
-    width: 22px; height: 22px;
-    filter: invert(1);
-    opacity: 0.7;
+    width: 26px; height: 26px;
+    opacity: 0.75;
     position: relative;
     z-index: 1;
-    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), filter var(--transition-fast);
 }
 
-.ability-icon-wrap:hover img { opacity: 1; transform: scale(1.1); }
+.ability-icon-wrap:hover img { 
+    opacity: 1; 
+    transform: scale(1.15); 
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
 
 .ability-slot {
     font-size: 0.58rem;

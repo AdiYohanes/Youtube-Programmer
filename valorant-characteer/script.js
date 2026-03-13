@@ -1,8 +1,6 @@
 /* =====================================================================
-   VALORANT AGENT SHOWCASE — script.js  (REDESIGNED)
-   ===================================================================*/
-
-const API_URL = 'https://valorant-api.com/v1/agents?isPlayableCharacter=true';
+    VALORANT AGENT SHOWCASE — script.js  (REDESIGNED)
+    ===================================================================*/
 
 // ─── State ──────────────────────────────────────────────────────────
 let agents   = [];
@@ -152,29 +150,21 @@ function animateCounter(el, newVal) {
 }
 
 // ─── Load Agents ─────────────────────────────────────────────────────
-async function loadAgents() {
-    loaderBar.style.width = '20%';
-    loaderStatus.textContent = 'FETCHING AGENTS...';
+function loadAgents() {
+    loaderBar.style.width = '60%';
+    loaderStatus.textContent = 'PROCESSING DATA...';
 
+    // The data is now available globally from data.js as `agentsData`
     try {
-        const res = await fetch(API_URL);
-        loaderBar.style.width = '60%';
-        loaderStatus.textContent = 'PROCESSING DATA...';
-        const json = await res.json();
-
-        agents = json.data.sort((a, b) => a.displayName.localeCompare(b.displayName));
-
-        loaderBar.style.width = '90%';
+        const rawData = agentsData.data || agentsData;
+        agents = rawData.sort((a, b) => a.displayName.localeCompare(b.displayName));
+        
+        loaderBar.style.width = '100%';
         loaderStatus.textContent = 'BUILDING ROSTER...';
 
-        await new Promise(r => setTimeout(r, 350));
-        loaderBar.style.width = '100%';
-        await new Promise(r => setTimeout(r, 280));
-
         initApp();
-
     } catch (err) {
-        loaderStatus.textContent = 'ERROR: UNABLE TO LOAD. CHECK CONNECTION.';
+        loaderStatus.textContent = 'ERROR: DATA NOT FOUND.';
         console.error(err);
     }
 }
@@ -198,7 +188,7 @@ function initApp() {
         app.classList.add('loaded');
         showAgent(0, true);
         startAuto();
-    }, 500);
+    }, 100);
 
     window.addEventListener('resize', resizeCanvas);
 }
@@ -270,48 +260,66 @@ function showAgent(index, immediate = false) {
 
     // ── character portrait transition ──
     const direction = !immediate ? 1 : 0;  // slide from right
-    characterPortrait.style.transition = 'none';
-    characterPortrait.style.opacity   = '0';
-    characterPortrait.style.transform = `translateX(${direction * 80}px) scale(0.93)`;
-    // also slide out bg image
-    characterBgImg.style.transition   = 'none';
-    characterBgImg.style.opacity      = '0';
+    
+    // First: Immediately hide text panel elements to prepare for new data
+    gsap.killTweensOf(".stagger-item > *");
+    gsap.set(".stagger-item > *", { opacity: 0, y: 50 });
+    agentName.classList.remove('reveal');
 
-    const delay = immediate ? 0 : 120;
-    setTimeout(() => {
-        characterPortrait.src = agent.fullPortrait || agent.bustPortrait || agent.displayIcon;
-        characterPortrait.alt = agent.displayName;
-        characterBgImg.style.backgroundImage = `url(${agent.background})`;
-
-        // trigger entrance
-        characterPortrait.style.transition =
-            'transform 1s cubic-bezier(0.19,1,0.22,1) 0.05s, opacity 0.75s ease 0.05s';
-        characterBgImg.style.transition =
-            'opacity 1.4s ease 0.1s, transform 1.4s ease 0.1s';
-
-        requestAnimationFrame(() => {
-            characterPortrait.style.opacity   = '1';
-            characterPortrait.style.transform = 'translateX(0) scale(1)';
-            characterBgImg.style.opacity      = app.classList.contains('loaded') ? '0.15' : '0';
-            characterBgImg.style.transform    = 'translate(-50%,-50%) scale(1.05)';
+    // Fade out out-going character and bg
+    if (!immediate) {
+        gsap.to([characterPortrait, characterBgImg], {
+            opacity: 0,
+            x: direction === 1 ? -80 : 0,
+            duration: 0.4,
+            ease: "power2.in",
+            onComplete: loadNewAgentImage
         });
+    } else {
+        loadNewAgentImage();
+    }
 
-        // Burst from character area center
-        if (!immediate) {
-            const rect = canvas.getBoundingClientRect();
-            burstParticles(
-                canvas.width * 0.78,
-                canvas.height * 0.5,
-                12,
-                c0
+    function loadNewAgentImage() {
+        const imgSrc = agent.fullPortrait || agent.bustPortrait || agent.displayIcon;
+        const bgSrc = agent.background;
+
+        const img = new Image();
+        img.onload = () => {
+            characterPortrait.src = img.src;
+            characterPortrait.alt = agent.displayName;
+            characterBgImg.style.backgroundImage = `url(${bgSrc})`;
+
+            // GSAP Enter Animation for Character
+            gsap.fromTo(characterPortrait, 
+                { opacity: 0, x: direction === 1 ? 80 : 0, scale: 0.93 },
+                { opacity: 1, x: 0, scale: 1, duration: 1.2, ease: "power3.out", delay: immediate ? 0 : 0.1 }
             );
-        }
-    }, delay);
 
-    // ── content panel stagger ──
-    contentPanel.classList.remove('animate-in');
-    void contentPanel.offsetWidth;
+            gsap.fromTo(characterBgImg,
+                { opacity: 0, scale: 0.9, xPercent: -50, yPercent: -50 },
+                { 
+                    opacity: app.classList.contains('loaded') ? 0.15 : 0, 
+                    scale: 1.05, 
+                    xPercent: -50, yPercent: -50,
+                    duration: 1.5, ease: "power2.out", delay: immediate ? 0 : 0.2 
+                }
+            );
 
+            // Burst from character area center
+            if (!immediate) {
+                burstParticles(
+                    canvas.width * 0.78,
+                    canvas.height * 0.5,
+                    12,
+                    c0
+                );
+            }
+        };
+        // Set src after defining onload
+        img.src = imgSrc;
+    }
+
+    // ── content panel text update ──
     roleName.textContent = (agent.role?.displayName || 'UNKNOWN').toUpperCase();
     if (agent.role?.displayIcon) {
         roleIcon.src = agent.role.displayIcon;
@@ -322,10 +330,9 @@ function showAgent(index, immediate = false) {
 
     agentName.textContent    = agent.displayName.toUpperCase();
     agentName.dataset.text   = agent.displayName.toUpperCase();
-    agentName.classList.remove('reveal');
     agentDesc.textContent    = agent.description;
 
-    // Abilities
+    // Abilities Update
     abilitiesRow.innerHTML = '';
     (agent.abilities || []).slice(0, 4).forEach(ab => {
         if (!ab.displayIcon) return;
@@ -348,14 +355,23 @@ function showAgent(index, immediate = false) {
 
     discoverBtnText.textContent = 'DISCOVER ' + agent.displayName.toUpperCase();
 
-    // Stagger in (slight delay to let glitch play first)
-    setTimeout(() => {
-        requestAnimationFrame(() => {
-            contentPanel.classList.add('animate-in');
-            setTimeout(() => agentName.classList.add('reveal'), 300);
-        });
-        isTransitioning = false;
-    }, immediate ? 0 : 180);
+    // GSAP Stagger Entrance for Text Panel
+    let staggerDelay = immediate ? 0 : 0.45;
+    gsap.to(".stagger-item > *", {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        delay: staggerDelay,
+        onStart: () => {
+            // Reveal text wipe slightly after stagger starts
+            setTimeout(() => agentName.classList.add('reveal'), 200);
+        },
+        onComplete: () => {
+            isTransitioning = false;
+        }
+    });
 
     // ── dots ──
     document.querySelectorAll('.dot').forEach((dot, i) => {
@@ -429,17 +445,29 @@ app.addEventListener('mouseleave', startAuto);
 
 // ─── Parallax on mouse move ────────────────────────────────────────────
 const hero = document.getElementById('hero');
-const sensitivity = 0.022;
+// Dramatically reduced sensitivity to prevent layout shifting/empty space
+const sensitivity = 0.008; 
 
 hero.addEventListener('mousemove', e => {
-    const x = (window.innerWidth  / 2 - e.clientX) * sensitivity;
-    const y = (window.innerHeight / 2 - e.clientY) * sensitivity;
+    // Calculate constraint to avoid massive shifts
+    const maxShift = 15;
+    let x = (window.innerWidth  / 2 - e.clientX) * sensitivity;
+    let y = (window.innerHeight / 2 - e.clientY) * sensitivity;
+    
+    // Clamp values 
+    x = Math.max(-maxShift, Math.min(maxShift, x));
+    y = Math.max(-maxShift, Math.min(maxShift, y));
+
     const wrap = document.getElementById('characterImgWrap');
-    if (wrap) wrap.style.transform = `translate(${x}px, ${y}px)`;
+    if (wrap) {
+        // Use will-change in CSS or requestAnimationFrame for performance, 
+        // here we just use 3d transform for GPU acceleration
+        wrap.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }
 
     // subtle bg gradient shift
-    const bx = 70 + (e.clientX / window.innerWidth  - 0.5) * 10;
-    const by = 50 + (e.clientY / window.innerHeight - 0.5) * 10;
+    const bx = 70 + (e.clientX / window.innerWidth  - 0.5) * 5;
+    const by = 50 + (e.clientY / window.innerHeight - 0.5) * 5;
 
     const colors = (filtered[currentIdx]?.backgroundGradientColors) || [];
     const c0 = hexToRgb(colors[0] || '25607aff');
@@ -452,9 +480,9 @@ hero.addEventListener('mousemove', e => {
 hero.addEventListener('mouseleave', () => {
     const wrap = document.getElementById('characterImgWrap');
     if (wrap) {
-        wrap.style.transition = 'transform 0.7s ease-out';
-        wrap.style.transform  = 'translate(0px, 0px)';
-        setTimeout(() => { wrap.style.transition = ''; }, 700);
+        wrap.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        wrap.style.transform  = 'translate3d(0px, 0px, 0px)';
+        setTimeout(() => { wrap.style.transition = ''; }, 600);
     }
 });
 
